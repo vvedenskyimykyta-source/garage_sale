@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relocation Sale</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans" x-data="shopApp()">
+
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b">
+        <div class="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold tracking-tight" x-text="t[lang].title"></h1>
+            <div class="flex gap-2">
+                <template x-for="l in ['ua', 'en', 'es']">
+                    <button @click="lang = l" 
+                            :class="lang === l ? 'bg-black text-white' : 'bg-gray-100'"
+                            class="px-3 py-1 rounded-full text-xs font-medium uppercase transition" 
+                            x-text="l"></button>
+                </template>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-8">
+        
+        <section class="mb-12 bg-white p-6 rounded-2xl shadow-sm border">
+            <h2 class="text-2xl font-bold mb-4" x-text="t[lang].aboutTitle"></h2>
+            <p class="text-gray-600 mb-6 leading-relaxed" x-text="t[lang].aboutText"></p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                <div class="flex items-center gap-3 p-3 bg-blue-50 rounded-lg text-blue-800">
+                    <span>📍</span> <span x-text="t[lang].location"></span>
+                </div>
+                <div class="flex items-center gap-3 p-3 bg-green-50 rounded-lg text-green-800">
+                    <span>💳</span> <span x-text="t[lang].payment"></span>
+                </div>
+            </div>
+            
+            <div class="flex gap-4 mt-6">
+                <a :href="'https://t.me/' + contacts.tg" class="flex-1 bg-[#229ED9] text-white py-3 rounded-xl font-bold text-center">Telegram</a>
+                <a :href="'https://wa.me/' + contacts.wa" class="flex-1 bg-[#25D366] text-white py-3 rounded-xl font-bold text-center">WhatsApp</a>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <template x-for="item in products" :key="item.id">
+                <div class="bg-white rounded-3xl shadow-sm border overflow-hidden flex flex-col" :class="item.status === 'sold' ? 'opacity-60' : ''">
+                    
+                    <div class="relative group">
+                        <div class="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar">
+                            <template x-for="img in item.photos">
+                                <div class="min-w-full snap-center aspect-square bg-gray-100">
+                                    <img :src="'img/' + img" class="w-full h-full object-cover" alt="">
+                                </div>
+                            </template>
+                        </div>
+                        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/20 backdrop-blur-md px-2 py-1 rounded-full text-[10px] text-white" x-text="'← ' + t[lang].swipe + ' →'"></div>
+                        
+                        <template x-if="item.status === 'sold'">
+                            <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+                                <span class="bg-white px-4 py-2 rounded-lg font-bold uppercase tracking-widest text-sm" x-text="t[lang].sold"></span>
+                            </div>
+                        </template>
+                    </div>
+
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-lg font-bold" x-text="item.name[lang]"></h3>
+                            <div class="text-right">
+                                <div class="text-xs text-gray-400 line-through" x-show="item.priceOld" x-text="item.priceOld + ' €'"></div>
+                                <div class="text-lg font-black text-red-600" x-text="item.price + ' €'"></div>
+                            </div>
+                        </div>
+                        <p class="text-gray-500 text-sm mb-6 flex-grow" x-text="item.desc[lang]"></p>
+                        
+                        <template x-if="item.status !== 'sold'">
+                            <div class="flex gap-2">
+                                <a :href="'https://t.me/' + contacts.tg + '?text=' + encodeURIComponent(t[lang].msg + ' ' + item.name[lang])" 
+                                   class="flex-1 border border-gray-200 py-2 rounded-xl text-center text-sm font-bold hover:bg-gray-50">TG</a>
+                                <a :href="'https://wa.me/' + contacts.wa + '?text=' + encodeURIComponent(t[lang].msg + ' ' + item.name[lang])" 
+                                   class="flex-1 border border-gray-200 py-2 rounded-xl text-center text-sm font-bold hover:bg-gray-50">WA</a>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </main>
+
+    <script>
+        function shopApp() {
+            return {
+                lang: 'ua',
+                contacts: {
+                    tg: 'your_username', // ТВОЙ ЮЗЕРНЕЙМ БЕЗ @
+                    wa: '380000000000'   // ТВОЙ НОМЕР БЕЗ +
+                },
+                t: {
+                    ua: { title: 'Розпродаж', aboutTitle: 'Ми переїжджаємо!', aboutText: 'Продаємо класні речі у зв’язку з переїздом в іншу країну. Все в гарному стані.', location: 'Самовивіз: Валенсія, центр', payment: 'Оплата: Готівка або Revolut', sold: 'Продано', msg: 'Привіт! Хочу купити:', swipe: 'свайп' },
+                    en: { title: 'Moving Sale', aboutTitle: 'We are moving!', aboutText: 'Selling our stuff because we are relocating. Everything is in great condition.', location: 'Pickup: Valencia, City Center', payment: 'Payment: Cash or Revolut', sold: 'Sold Out', msg: 'Hi! I want to buy:', swipe: 'swipe' },
+                    es: { title: 'Venta de mudanza', aboutTitle: '¡Nos mudamos!', aboutText: 'Vendemos nuestras cosas por mudanza. Todo en excelente estado.', location: 'Recogida: Valencia, centro', payment: 'Pago: Efectivo o Revolut', sold: 'Vendido', msg: '¡Hola! Quiero comprar:', swipe: 'deslizar' }
+                },
+                products: [
+                    {
+                        id: 1,
+                        status: 'active', // 'active' или 'sold'
+                        name: { ua: 'Кавомашина', en: 'Coffee Machine', es: 'Cafetera' },
+                        desc: { ua: 'Працює ідеально, користувалися півроку.', en: 'Works perfectly, used for 6 months.', es: 'Funciona perfectamente, usada 6 meses.' },
+                        price: 150,
+                        priceOld: 220,
+                        photos: ['coffee1.jpg', 'coffee2.jpg'] // Имена файлов в папке img
+                    },
+                    {
+                        id: 2,
+                        status: 'sold',
+                        name: { ua: 'Велосипед', en: 'Bicycle', es: 'Bicicleta' },
+                        desc: { ua: 'Гірський велосипед, 21 швидкість.', en: 'Mountain bike, 21 speeds.', es: 'Bici de montaña, 21 velocidades.' },
+                        price: 300,
+                        priceOld: null,
+                        photos: ['bike1.jpg']
+                    }
+                ]
+            }
+        }
+    </script>
+</body>
+</html>
