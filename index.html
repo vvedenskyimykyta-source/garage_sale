@@ -32,18 +32,21 @@
         <section class="mb-12 bg-white p-6 rounded-2xl shadow-sm border">
             <h2 class="text-2xl font-bold mb-4" x-text="t[lang].aboutTitle"></h2>
             <p class="text-gray-600 mb-6 leading-relaxed" x-text="t[lang].aboutText"></p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                <div class="flex items-center gap-3 p-3 bg-blue-50 rounded-lg text-blue-800">
-                    <span>📍</span> <span x-text="t[lang].location"></span>
-                </div>
-                <div class="flex items-center gap-3 p-3 bg-green-50 rounded-lg text-green-800">
-                    <span>💳</span> <span x-text="t[lang].payment"></span>
-                </div>
-            </div>
-            
             <div class="flex gap-4 mt-6">
                 <a :href="'https://t.me/' @lagerfeeld" class="flex-1 bg-[#229ED9] text-white py-3 rounded-xl font-bold text-center transition hover:opacity-90">Telegram</a>
                 <a :href="'https://wa.me/' 380984002947" class="flex-1 bg-[#25D366] text-white py-3 rounded-xl font-bold text-center transition hover:opacity-90">WhatsApp</a>
+            </div>
+            <div class="flex gap-4 mt-6">
+                <a :href="'https://t.me/' + contacts.tg" 
+                    target="_blank"
+                    class="flex-1 bg-[#54a9eb] text-white py-4 rounded-2xl font-bold text-center transition hover:opacity-90 shadow-sm flex items-center justify-center gap-2">
+                    <span>Telegram</span>
+                </a>
+                <a :href="'https://wa.me/' + contacts.wa" 
+                    target="_blank"
+                    class="flex-1 bg-[#69d973] text-white py-4 rounded-2xl font-bold text-center transition hover:opacity-90 shadow-sm flex items-center justify-center gap-2">
+                    <span>WhatsApp</span>
+                </a>
             </div>
         </section>
 
@@ -100,7 +103,7 @@
             return {
                 lang: 'ua',
                 contacts: {
-                    tg: '@lagerfeeld', 
+                    tg: 'lagerfeeld', 
                     wa: '380984002947'   
                 },
                 t: {
