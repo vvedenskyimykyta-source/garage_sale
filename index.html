@@ -42,8 +42,8 @@
             </div>
             
             <div class="flex gap-4 mt-6">
-                <a :href="'https://t.me/' @lagerfeeld" class="flex-1 bg-[#229ED9] text-white py-3 rounded-xl font-bold text-center">Telegram</a>
-                <a :href="'https://wa.me/' + 380984002947" class="flex-1 bg-[#25D366] text-white py-3 rounded-xl font-bold text-center">WhatsApp</a>
+                <a :href="'https://t.me/' + contacts.tg" class="flex-1 bg-[#229ED9] text-white py-3 rounded-xl font-bold text-center transition hover:opacity-90">Telegram</a>
+                <a :href="'https://wa.me/' + contacts.wa" class="flex-1 bg-[#25D366] text-white py-3 rounded-xl font-bold text-center transition hover:opacity-90">WhatsApp</a>
             </div>
         </section>
 
@@ -62,31 +62,28 @@
                         <div class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/20 backdrop-blur-md px-2 py-1 rounded-full text-[10px] text-white" x-text="'← ' + t[lang].swipe + ' →'"></div>
                         
                         <template x-if="item.status === 'sold'">
-                            <div class="mt-4"> 
-                                <a :href="'https://t.me/' + contacts.tg + '?text=' + encodeURIComponent(t[lang].msg + ' ' + item.name[lang])" 
-                                    class="block w-full bg-[#f87171] hover:bg-[#ef4444] text-white py-3 rounded-xl text-center text-sm font-bold transition-all duration-300 shadow-md active:scale-95">
-                                    <span x-text="lang === 'ua' ? 'Купити' : (lang === 'es' ? 'Comprar' : 'Buy')"></span>
-                                </a>
+                            <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+                                <span class="bg-white px-4 py-2 rounded-lg font-bold uppercase tracking-widest text-sm" x-text="t[lang].sold"></span>
                             </div>
                         </template>
                     </div>
 
                     <div class="p-6 flex flex-col flex-grow">
                         <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-lg font-bold" x-text="item.name[lang]"></h3>
-                            <div class="text-right">
-                                <div class="text-xs text-gray-400 line-through" x-show="item.priceOld" x-text="item.priceOld + ' €'"></div>
-                                <div class="text-lg font-black text-red-600" x-text="item.price + ' €'"></div>
+                            <h3 class="text-lg font-bold leading-tight" x-text="item.name[lang]"></h3>
+                            <div class="text-right ml-4">
+                                <div class="text-xs text-gray-400 line-through whitespace-nowrap" x-show="item.priceOld" x-text="item.priceOld + ' €'"></div>
+                                <div class="text-lg font-black text-red-600 whitespace-nowrap" x-text="item.price + ' €'"></div>
                             </div>
                         </div>
                         <p class="text-gray-500 text-sm mb-6 flex-grow" x-text="item.desc[lang]"></p>
                         
                         <template x-if="item.status !== 'sold'">
-                            <div class="flex gap-2">
+                            <div class="mt-auto">
                                 <a :href="'https://t.me/' + contacts.tg + '?text=' + encodeURIComponent(t[lang].msg + ' ' + item.name[lang])" 
-                                   class="flex-1 border border-gray-200 py-2 rounded-xl text-center text-sm font-bold hover:bg-gray-50">TG</a>
-                                <a :href="'https://wa.me/' + contacts.wa + '?text=' + encodeURIComponent(t[lang].msg + ' ' + item.name[lang])" 
-                                   class="flex-1 border border-gray-200 py-2 rounded-xl text-center text-sm font-bold hover:bg-gray-50">WA</a>
+                                   class="block w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-xl text-center text-sm font-bold transition-all shadow-md active:scale-95 uppercase tracking-wide">
+                                   <span x-text="t[lang].buyBtn"></span>
+                                </a>
                             </div>
                         </template>
                     </div>
@@ -100,20 +97,20 @@
             return {
                 lang: 'ua',
                 contacts: {
-                    tg: 'your_username', // ТВОЙ ЮЗЕРНЕЙМ БЕЗ @
-                    wa: '380000000000'   // ТВОЙ НОМЕР БЕЗ +
+                    tg: 'lagerfeeld', 
+                    wa: '380984002947'   
                 },
                 t: {
-                    ua: { title: 'Розпродаж', aboutTitle: 'Ми переїжджаємо!', aboutText: 'Продаємо класні речі у зв’язку з переїздом в іншу країну. Все в гарному стані.', location: 'Самовивіз: Валенсія, центр', payment: 'Оплата: Готівка або Revolut', sold: 'Продано', msg: 'Привіт! Хочу купити:', swipe: 'свайп' },
-                    en: { title: 'Moving Sale', aboutTitle: 'We are moving!', aboutText: 'Selling our stuff because we are relocating. Everything is in great condition.', location: 'Pickup: Valencia, City Center', payment: 'Payment: Cash or Revolut', sold: 'Sold Out', msg: 'Hi! I want to buy:', swipe: 'swipe' },
-                    es: { title: 'Venta de mudanza', aboutTitle: '¡Nos mudamos!', aboutText: 'Vendemos nuestras cosas por mudanza. Todo en excelente estado.', location: 'Recogida: Valencia, centro', payment: 'Pago: Efectivo o Revolut', sold: 'Vendido', msg: '¡Hola! Quiero comprar:', swipe: 'deslizar' }
+                    ua: { title: 'Розпродаж', aboutTitle: 'Ми переїжджаємо!', aboutText: 'Продаємо класні речі у зв’язку з переїздом в іншу країну. Все в гарному стані.', location: 'Самовивіз: Валенсія, центр', payment: 'Оплата: Готівка або Revolut', sold: 'Продано', msg: 'Привіт! Хочу купити:', swipe: 'свайп', buyBtn: 'Купити' },
+                    en: { title: 'Moving Sale', aboutTitle: 'We are moving!', aboutText: 'Selling our stuff because we are relocating. Everything is in great condition.', location: 'Pickup: Valencia, City Center', payment: 'Payment: Cash or Revolut', sold: 'Sold Out', msg: 'Hi! I want to buy:', swipe: 'swipe', buyBtn: 'Buy' },
+                    es: { title: 'Venta de mudanza', aboutTitle: '¡Nos mudamos!', aboutText: 'Vendemos nuestras cosas por mudanza. Todo en excelente estado.', location: 'Recogida: Valencia, centro', payment: 'Pago: Efectivo o Revolut', sold: 'Vendido', msg: '¡Hola! Quiero comprar:', swipe: 'deslizar', buyBtn: 'Comprar' }
                 },
                 products: [
                     {
                         id: 1,
                         status: 'active',
                         name: { ua: 'Розумний вентилятор', en: 'Smart fan', es: 'Ventilador inteligente' },
-                        desc: { ua: 'Працює ідеально, має 2 режими, таймер, 3 ступені обдуву, пульт керування, дійсно майже безшумний, размах обдуву 90 грдусів. Супер економічний, купили у серпні 25 року, здається навіть ще на гарантії. В наявності 2 штуки.', en: 'Works perfectly, has 2 modes, timer, 3 air flow levels, remote control, really almost silent, air flow range 90 degrees. Super economical, bought in August 2025, seems to be still under warranty. 2 pieces available.', es: 'Funciona perfectamente, tiene 2 modos, temporizador, 3 niveles de flujo de aire, control remoto, es prácticamente silencioso y su rango de flujo de aire es de 90 grados. Súper económico, comprado en agosto de 2025, parece que aún está en garantía. Dos unidades disponibles.' },
+                        desc: { ua: 'Працює ідеально, має 2 режими, таймер, 3 ступені обдуву, пульт керування. В наявності 2 штуки.', en: 'Works perfectly, has 2 modes, timer, 3 air flow levels, remote control. 2 pieces available.', es: 'Funciona perfectamente, tiene 2 modos, temporizador, 3 niveles de flujo de aire. Dos unidades disponibles.' },
                         price: 89,
                         priceOld: 106,
                         photos: ['aircon1.JPG', 'aircon2.JPG', 'aircon3.JPG', 'aircon4.JPG', 'aircon5.JPG']
@@ -121,29 +118,11 @@
                     {
                         id: 2,
                         status: 'active',
-                        name: { ua: 'Два барні столики та стільці до них', en: 'Two bar tables and chairs', es: 'Dos mesas de bar y sillas.' },
-                        desc: { ua: 'Прості та зручні два невеликих столи та стільця до них у барному форматі. Ми використовували їх на кухні по стану 8/10. ', en: 'Simple and convenient two small tables and chairs in a bar format. We used them in the kitchen, condition 8/10.', es: 'Dos mesas y sillas pequeñas, sencillas y prácticas, en formato bar. Las usamos en la cocina. Su estado es 8/10.' },
+                        name: { ua: 'Два барні столики та стільці', en: 'Two bar tables and chairs', es: 'Dos mesas de bar y sillas.' },
+                        desc: { ua: 'Прості та зручні два невеликих столи та стільця. Стан 8/10.', en: 'Simple and convenient two small tables and chairs. Condition 8/10.', es: 'Dos mesas и sillas pequeñas, sencillas y prácticas. Estado 8/10.' },
                         price: 49,
                         priceOld: 99,
                         photos: ['bartab1.JPG', 'bartab2.JPG', 'bartab3.JPG', 'bartab4.JPG', 'bartab5.JPG' ]
-                    },
-                    {
-                        id: 3,
-                        status: 'active',
-                        name: { ua: 'Розумний вентилятор', en: 'Smart fan', es: 'Ventilador inteligente' },
-                        desc: { ua: 'Працює ідеально, має 2 режими, таймер, 3 ступені обдуву, пульт керування, дійсно майже безшумний, размах обдуву 90 грдусів. Супер економічний, купили у серпні 25 року, здається навіть ще на гарантії. В наявності 2 штуки.', en: 'Works perfectly, has 2 modes, timer, 3 air flow levels, remote control, really almost silent, air flow range 90 degrees. Super economical, bought in August 2025, seems to be still under warranty. 2 pieces available.', es: 'Funciona perfectamente, tiene 2 modos, temporizador, 3 niveles de flujo de aire, control remoto, es prácticamente silencioso y su rango de flujo de aire es de 90 grados. Súper económico, comprado en agosto de 2025, parece que aún está en garantía. Dos unidades disponibles.' },
-                        price: 89,
-                        priceOld: 106,
-                        photos: ['aircon1.JPG', 'aircon2.JPG', 'aircon3.JPG', 'aircon4.JPG', 'aircon5.JPG']
-                    },
-                    {
-                        id: 4,
-                        status: 'active',
-                        name: { ua: 'Розумний вентилятор', en: 'Smart fan', es: 'Ventilador inteligente' },
-                        desc: { ua: 'Працює ідеально, має 2 режими, таймер, 3 ступені обдуву, пульт керування, дійсно майже безшумний, размах обдуву 90 грдусів. Супер економічний, купили у серпні 25 року, здається навіть ще на гарантії. В наявності 2 штуки.', en: 'Works perfectly, has 2 modes, timer, 3 air flow levels, remote control, really almost silent, air flow range 90 degrees. Super economical, bought in August 2025, seems to be still under warranty. 2 pieces available.', es: 'Funciona perfectamente, tiene 2 modos, temporizador, 3 niveles de flujo de aire, control remoto, es prácticamente silencioso y su rango de flujo de aire es de 90 grados. Súper económico, comprado en agosto de 2025, parece que aún está en garantía. Dos unidades disponibles.' },
-                        price: 89,
-                        priceOld: 106,
-                        photos: ['aircon1.JPG', 'aircon2.JPG', 'aircon3.JPG', 'aircon4.JPG', 'aircon5.JPG']
                     }
                 ]
             }
