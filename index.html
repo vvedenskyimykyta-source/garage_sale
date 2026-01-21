@@ -64,9 +64,13 @@
                         </div>
                         <div class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/20 backdrop-blur-md px-2 py-1 rounded-full text-[10px] text-white" x-text="'← ' + t[lang].swipe + ' →'"></div>
                         
-                        <template x-if="item.status === 'sold'">
-                            <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
-                                <span class="bg-white px-4 py-2 rounded-lg font-bold uppercase tracking-widest text-sm" x-text="t[lang].sold"></span>
+                        <template x-if="item.status !== 'sold'">
+                            <div class="mt-auto">
+                                <a :href="'https://t.me/' + contacts.tg + '?text=' + encodeURIComponent(t[lang].msg + ' ' + item.name[lang])" 
+                                    target="_blank"
+                                    class="block w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-xl text-center text-sm font-bold transition-all shadow-md active:scale-95 uppercase tracking-wide">
+                                    <span x-text="t[lang].buyBtn"></span>
+                                </a>
                             </div>
                         </template>
                     </div>
