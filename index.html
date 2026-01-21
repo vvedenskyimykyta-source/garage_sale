@@ -33,18 +33,14 @@
             <h2 class="text-2xl font-bold mb-4" x-text="t[lang].aboutTitle"></h2>
             <p class="text-gray-600 mb-6 leading-relaxed" x-text="t[lang].aboutText"></p>
             <div class="flex gap-4 mt-6">
-                <a :href="'https://t.me/' @lagerfeeld" class="flex-1 bg-[#229ED9] text-white py-3 rounded-xl font-bold text-center transition hover:opacity-90">Telegram</a>
-                <a :href="'https://wa.me/' 380984002947" class="flex-1 bg-[#25D366] text-white py-3 rounded-xl font-bold text-center transition hover:opacity-90">WhatsApp</a>
-            </div>
-            <div class="flex gap-4 mt-6">
                 <a :href="'https://t.me/' + contacts.tg" 
                     target="_blank"
-                    class="flex-1 bg-[#54a9eb] text-white py-4 rounded-2xl font-bold text-center transition hover:opacity-90 shadow-sm flex items-center justify-center gap-2">
+                    class="flex-1 bg-[#229ED9] text-white py-4 rounded-2xl font-bold text-center transition hover:opacity-90 shadow-sm flex items-center justify-center gap-2">
                     <span>Telegram</span>
                 </a>
                 <a :href="'https://wa.me/' + contacts.wa" 
                     target="_blank"
-                    class="flex-1 bg-[#69d973] text-white py-4 rounded-2xl font-bold text-center transition hover:opacity-90 shadow-sm flex items-center justify-center gap-2">
+                    class="flex-1 bg-[#25D366] text-white py-4 rounded-2xl font-bold text-center transition hover:opacity-90 shadow-sm flex items-center justify-center gap-2">
                     <span>WhatsApp</span>
                 </a>
             </div>
