@@ -60,20 +60,24 @@
             <template x-for="item in products" :key="item.id">
                 <div class="bg-white rounded-[2.5rem] shadow-sm border border-gray-100 overflow-hidden flex flex-col transition-all hover:shadow-xl group" :class="item.status === 'sold' ? 'opacity-50 grayscale' : ''">
                     
-                    <div class="relative overflow-hidden bg-gray-100">
-                        <div class="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar">
+                    <div class="relative overflow-hidden bg-gray-200 aspect-[4/5]">
+                        <div class="flex h-full overflow-x-auto snap-x snap-mandatory hide-scrollbar">
                             <template x-for="img in item.photos">
-                                <div class="min-w-full snap-center aspect-[4/5] flex items-center justify-center">
+                                <div class="min-w-full h-full snap-center flex items-center justify-center bg-gray-200">
                                     <img :src="img" 
                                         loading="lazy"
-                                        class="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105" 
+                                        class="w-full h-full object-cover transition-opacity duration-300" 
+                                        @error="$el.src='https://via.placeholder.com/400x500?text=Photo+Error'"
                                         alt="product image">
                                 </div>
                             </template>
                         </div>
-                        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/30 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold text-white uppercase tracking-widest pointer-events-none" 
-                            x-show="item.photos.length > 1"
-                            x-text="t[lang].swipe"></div>
+                        
+                        <template x-if="item.photos.length > 1">
+                            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold text-white uppercase tracking-widest pointer-events-none">
+                                <span x-text="t[lang].swipe"></span>
+                            </div>
+                        </template>
                         
                         <template x-if="item.status === 'sold'">
                             <div class="absolute inset-0 bg-black/60 flex items-center justify-center z-10">
