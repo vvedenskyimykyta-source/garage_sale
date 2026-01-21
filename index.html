@@ -42,8 +42,8 @@
             </div>
             
             <div class="flex gap-4 mt-6">
-                <a :href="'https://t.me/' + contacts.tg" class="flex-1 bg-[#229ED9] text-white py-3 rounded-xl font-bold text-center">Telegram</a>
-                <a :href="'https://wa.me/' + contacts.wa" class="flex-1 bg-[#25D366] text-white py-3 rounded-xl font-bold text-center">WhatsApp</a>
+                <a :href="'https://t.me/' @lagerfeeld" class="flex-1 bg-[#229ED9] text-white py-3 rounded-xl font-bold text-center">Telegram</a>
+                <a :href="'https://wa.me/' + 380984002947" class="flex-1 bg-[#25D366] text-white py-3 rounded-xl font-bold text-center">WhatsApp</a>
             </div>
         </section>
 
@@ -55,7 +55,7 @@
                         <div class="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar">
                             <template x-for="img in item.photos">
                                 <div class="min-w-full snap-center aspect-square bg-gray-100">
-                                    <img :src="'img/' + img" class="w-full h-full object-cover" alt="">
+                                    <img :src="img" class="w-full h-full object-cover" alt="">
                                 </div>
                             </template>
                         </div>
@@ -108,21 +108,39 @@
                 products: [
                     {
                         id: 1,
-                        status: 'active', // 'active' или 'sold'
-                        name: { ua: 'Кавомашина', en: 'Coffee Machine', es: 'Cafetera' },
-                        desc: { ua: 'Працює ідеально, користувалися півроку.', en: 'Works perfectly, used for 6 months.', es: 'Funciona perfectamente, usada 6 meses.' },
-                        price: 150,
-                        priceOld: 220,
-                        photos: ['coffee1.jpg', 'coffee2.jpg'] // Имена файлов в папке img
+                        status: 'active',
+                        name: { ua: 'Розумний вентилятор', en: 'Smart fan', es: 'Ventilador inteligente' },
+                        desc: { ua: 'Працює ідеально, має 2 режими, таймер, 3 ступені обдуву, пульт керування, дійсно майже безшумний, размах обдуву 90 грдусів. Супер економічний, купили у серпні 25 року, здається навіть ще на гарантії. В наявності 2 штуки.', en: 'Works perfectly, has 2 modes, timer, 3 air flow levels, remote control, really almost silent, air flow range 90 degrees. Super economical, bought in August 2025, seems to be still under warranty. 2 pieces available.', es: 'Funciona perfectamente, tiene 2 modos, temporizador, 3 niveles de flujo de aire, control remoto, es prácticamente silencioso y su rango de flujo de aire es de 90 grados. Súper económico, comprado en agosto de 2025, parece que aún está en garantía. Dos unidades disponibles.' },
+                        price: 89,
+                        priceOld: 106,
+                        photos: ['aircon1.JPG', 'aircon2.JPG', 'aircon3.JPG', 'aircon4.JPG', 'aircon5.JPG']
                     },
                     {
                         id: 2,
-                        status: 'sold',
-                        name: { ua: 'Велосипед', en: 'Bicycle', es: 'Bicicleta' },
-                        desc: { ua: 'Гірський велосипед, 21 швидкість.', en: 'Mountain bike, 21 speeds.', es: 'Bici de montaña, 21 velocidades.' },
-                        price: 300,
-                        priceOld: null,
-                        photos: ['bike1.jpg']
+                        status: 'active',
+                        name: { ua: 'Два барні столики та стільці до них', en: 'Two bar tables and chairs', es: 'Dos mesas de bar y sillas.' },
+                        desc: { ua: 'Прості та зручні два невеликих столи та стільця до них у барному форматі. Ми використовували їх на кухні по стану 8/10. ', en: 'Simple and convenient two small tables and chairs in a bar format. We used them in the kitchen, condition 8/10.', es: 'Dos mesas y sillas pequeñas, sencillas y prácticas, en formato bar. Las usamos en la cocina. Su estado es 8/10.' },
+                        price: 49,
+                        priceOld: 99,
+                        photos: ['bartab1.JPG', 'bartab2.JPG', 'bartab3.JPG', 'bartab4.JPG', 'bartab5.JPG' ]
+                    },
+                    {
+                        id: 3,
+                        status: 'active',
+                        name: { ua: 'Розумний вентилятор', en: 'Smart fan', es: 'Ventilador inteligente' },
+                        desc: { ua: 'Працює ідеально, має 2 режими, таймер, 3 ступені обдуву, пульт керування, дійсно майже безшумний, размах обдуву 90 грдусів. Супер економічний, купили у серпні 25 року, здається навіть ще на гарантії. В наявності 2 штуки.', en: 'Works perfectly, has 2 modes, timer, 3 air flow levels, remote control, really almost silent, air flow range 90 degrees. Super economical, bought in August 2025, seems to be still under warranty. 2 pieces available.', es: 'Funciona perfectamente, tiene 2 modos, temporizador, 3 niveles de flujo de aire, control remoto, es prácticamente silencioso y su rango de flujo de aire es de 90 grados. Súper económico, comprado en agosto de 2025, parece que aún está en garantía. Dos unidades disponibles.' },
+                        price: 89,
+                        priceOld: 106,
+                        photos: ['aircon1.JPG', 'aircon2.JPG', 'aircon3.JPG', 'aircon4.JPG', 'aircon5.JPG']
+                    },
+                    {
+                        id: 4,
+                        status: 'active',
+                        name: { ua: 'Розумний вентилятор', en: 'Smart fan', es: 'Ventilador inteligente' },
+                        desc: { ua: 'Працює ідеально, має 2 режими, таймер, 3 ступені обдуву, пульт керування, дійсно майже безшумний, размах обдуву 90 грдусів. Супер економічний, купили у серпні 25 року, здається навіть ще на гарантії. В наявності 2 штуки.', en: 'Works perfectly, has 2 modes, timer, 3 air flow levels, remote control, really almost silent, air flow range 90 degrees. Super economical, bought in August 2025, seems to be still under warranty. 2 pieces available.', es: 'Funciona perfectamente, tiene 2 modos, temporizador, 3 niveles de flujo de aire, control remoto, es prácticamente silencioso y su rango de flujo de aire es de 90 grados. Súper económico, comprado en agosto de 2025, parece que aún está en garantía. Dos unidades disponibles.' },
+                        price: 89,
+                        priceOld: 106,
+                        photos: ['aircon1.JPG', 'aircon2.JPG', 'aircon3.JPG', 'aircon4.JPG', 'aircon5.JPG']
                     }
                 ]
             }
