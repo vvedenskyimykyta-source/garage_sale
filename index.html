@@ -74,6 +74,9 @@
                             <div class="text-right ml-4">
                                 <div class="text-xs text-gray-400 line-through whitespace-nowrap" x-show="item.priceOld" x-text="item.priceOld + ' €'"></div>
                                 <div class="text-lg font-black text-red-600 whitespace-nowrap" x-text="item.price + ' €'"></div>
+                                <div class="text-[10px] uppercase font-bold text-gray-400 mt-1">
+                                    <span x-text="t[lang].countLabel"></span>: <span class="text-gray-600" x-text="item.count"></span>
+                                </div>
                             </div>
                         </div>
                         <p class="text-gray-500 text-sm mb-6 flex-grow" x-text="item.desc[lang]"></p>
@@ -101,141 +104,24 @@
                     wa: '380984002947'   
                 },
                 t: {
-                    ua: { title: 'Розпродаж', aboutTitle: 'Ми переїжджаємо!', aboutText: 'Продаємо класні речі у зв’язку з переїздом в іншу країну. Все в гарному стані.', location: 'Самовивіз: Валенсія, центр', payment: 'Оплата: Готівка або Revolut', sold: 'Продано', msg: 'Привіт! Хочу купити:', swipe: 'свайп', buyBtn: 'Купити' },
-                    en: { title: 'Moving Sale', aboutTitle: 'We are moving!', aboutText: 'Selling our stuff because we are relocating. Everything is in great condition.', location: 'Pickup: Valencia, City Center', payment: 'Payment: Cash or Revolut', sold: 'Sold Out', msg: 'Hi! I want to buy:', swipe: 'swipe', buyBtn: 'Buy' },
-                    es: { title: 'Venta de mudanza', aboutTitle: '¡Nos mudamos!', aboutText: 'Vendemos nuestras cosas por mudanza. Todo en excelente estado.', location: 'Recogida: Valencia, centro', payment: 'Pago: Efectivo o Revolut', sold: 'Vendido', msg: '¡Hola! Quiero comprar:', swipe: 'deslizar', buyBtn: 'Comprar' }
+                    ua: { title: 'Розпродаж', aboutTitle: 'Ми переїжджаємо!', aboutText: 'Продаємо речі у зв’язку з переїздом. Все в гарному стані.', location: 'Самовивіз: Валенсія, центр', payment: 'Оплата: Готівка або Revolut', sold: 'Продано', msg: 'Привіт! Хочу купити:', swipe: 'свайп', buyBtn: 'Купити', countLabel: 'В наявності' },
+                    en: { title: 'Moving Sale', aboutTitle: 'We are moving!', aboutText: 'Selling our stuff because we are relocating. Great condition.', location: 'Pickup: Valencia, City Center', payment: 'Payment: Cash or Revolut', sold: 'Sold Out', msg: 'Hi! I want to buy:', swipe: 'swipe', buyBtn: 'Buy', countLabel: 'Available' },
+                    es: { title: 'Venta de mudanza', aboutTitle: '¡Nos mudamos!', aboutText: 'Vendemos nuestras cosas por mudanza. Todo en excelente estado.', location: 'Recogida: Valencia, centro', payment: 'Pago: Efectivo o Revolut', sold: 'Vendido', msg: '¡Hola! Quiero comprar:', swipe: 'deslizar', buyBtn: 'Comprar', countLabel: 'Disponible' }
                 },
                 products: [
-                    {
-                        id: 1,
-                        status: 'active',
-                        name: { ua: 'Розумний вентилятор', en: 'Smart fan', es: 'Ventilador inteligente' },
-                        desc: { ua: 'Працює ідеально, має 3 ступені обдуву та пульт. Майже безшумний.', en: 'Works perfectly, 3 airflow levels, remote control. Almost silent.', es: 'Funciona perfectamente, 3 niveles de aire y control remoto. Muy silencioso.' },
-                        price: 89,
-                        priceOld: 106,
-                        count: 2,
-                        photos: ['aircon1.JPG', 'aircon2.JPG', 'aircon3.JPG', 'aircon4.JPG', 'aircon5.JPG']
-                    },
-                    {
-                        id: 2,
-                        status: 'active',
-                        name: { ua: 'Барний стіл та стільці', en: 'Bar table and chairs', es: 'Mesa de bar y sillas' },
-                        desc: { ua: 'Зручний високий стіл та два стільці. Стан 8/10.', en: 'Comfortable high table and two chairs. Condition 8/10.', es: 'Mesa alta cómoda y dos sillas. Estado 8/10.' },
-                        price: 49,
-                        priceOld: 99,
-                        count: 1,
-                        photos: ['bartab1.JPG', 'bartab2.JPG', 'bartab3.JPG', 'bartab4.JPG', 'bartab5.JPG']
-                    },
-                    {
-                        id: 3,
-                        status: 'active',
-                        name: { ua: 'Стілець складний', en: 'Folding chair', es: 'Silla plegable' },
-                        desc: { ua: 'Зручні складні стільці. Ціна за 1 шт.', en: 'Comfortable folding chairs. Price per unit.', es: 'Sillas plegables cómodas. Precio por unidad.' },
-                        price: 10,
-                        priceOld: 17,
-                        count: 4,
-                        photos: ['chair1.JPG', 'chair2.JPG']
-                    },
-                    {
-                        id: 4,
-                        status: 'active',
-                        name: { ua: 'Кавовий столик', en: 'Coffee table', es: 'Mesa de centro' },
-                        desc: { ua: 'Компактний столик для вітальні.', en: 'Compact table for the living room.', es: 'Mesa compacta para el salón.' },
-                        price: 10,
-                        priceOld: 24.99,
-                        count: 1,
-                        photos: ['cooffeet1.JPG', 'cooffeet2.JPG']
-                    },
-                    {
-                        id: 5,
-                        status: 'active',
-                        name: { ua: 'Туалетний столик', en: 'Dressing table', es: 'Tocador' },
-                        desc: { ua: 'Елегантний столик з дзеркалом.', en: 'Elegant table with a mirror.', es: 'Mesa elegante con espejo.' },
-                        price: 110,
-                        priceOld: 169,
-                        count: 1,
-                        photos: ['cosmotab1.JPG', 'cosmotab2.JPG', 'cosmotab3.JPG', 'cosmotab4.JPG']
-                    },
-                    {
-                        id: 6,
-                        status: 'active',
-                        name: { ua: 'Обідній стіл (розкладний)', en: 'Dining table (foldable)', es: 'Mesa de comedor (plegable)' },
-                        desc: { ua: 'Великий розкладний стіл для всієї родини.', en: 'Large foldable table for the whole family.', es: 'Mesa de comedor grande y plegable.' },
-                        price: 49,
-                        priceOld: 89,
-                        count: 1,
-                        photos: ['dinningt1.JPG', 'dinningt2.JPG', 'dinningt3.JPG', 'dinningt4.JPG', 'dinningt5.JPG', 'dinningt6.JPG']
-                    },
-                    {
-                        id: 7,
-                        status: 'active',
-                        name: { ua: 'Мікрохвильова піч', en: 'Microwave oven', es: 'Microondas' },
-                        desc: { ua: 'Надійна та потужна піч у гарному стані.', en: 'Reliable and powerful oven in good condition.', es: 'Microondas fiable y potente en buen estado.' },
-                        price: 29,
-                        priceOld: 69,
-                        count: 1,
-                        photos: ['mw1.JPG', 'mw2.JPG', 'mw3.JPG', 'mw4.JPG', 'mw5.JPG']
-                    },
-                    {
-                        id: 8,
-                        status: 'active',
-                        name: { ua: 'Косметична шафка', en: 'Cosmetic cabinet', es: 'Armario de cosméticos' },
-                        desc: { ua: 'Зручна шафка для дрібниць у ванну або спальню.', en: 'Convenient cabinet for small items.', es: 'Armario práctico para objetos pequeños.' },
-                        price: 15,
-                        priceOld: 29,
-                        count: 1,
-                        photos: ['sha1.JPG', 'sha2.JPG']
-                    },
-                    {
-                        id: 9,
-                        status: 'active',
-                        name: { ua: 'Офісне крісло', en: 'Office chair', es: 'Silla de oficina' },
-                        desc: { ua: 'Ергономічне крісло для роботи за комп’ютером.', en: 'Ergonomic chair for computer work.', es: 'Silla ergonómica para trabajar.' },
-                        price: 39,
-                        priceOld: 99,
-                        count: 1,
-                        photos: ['officech1.JPG', 'officech2.JPG', 'officech3.JPG']
-                    },
-                    {
-                        id: 10,
-                        status: 'active',
-                        name: { ua: 'Полиця для взуття', en: 'Shoe rack', es: 'Zapatero' },
-                        desc: { ua: 'Компактна полиця, що економить простір.', en: 'Compact rack that saves space.', es: 'Estante compacto que ahorra espacio.' },
-                        price: 5,
-                        priceOld: 20,
-                        count: 1,
-                        photos: ['shoes1.JPG', 'shoes2.JPG']
-                    },
-                    {
-                        id: 11,
-                        status: 'active',
-                        name: { ua: 'Диван', en: 'Sofa', es: 'Sofá' },
-                        desc: { ua: 'Великий комфортний диван, стан відмінний.', en: 'Large comfortable sofa, excellent condition.', es: 'Sofá grande y cómodo, excelente estado.' },
-                        price: 150,
-                        priceOld: 499,
-                        count: 1,
-                        photos: ['sofa1.JPG', 'sofa2.JPG', 'sofa3.JPG', 'sofa4.JPG', 'sofa5.JPG']
-                    },
-                    {
-                        id: 12,
-                        status: 'active',
-                        name: { ua: 'Тумба під телевізор', en: 'TV Stand', es: 'Mueble de TV' },
-                        desc: { ua: 'Сучасна тумба з додатковим місцем для зберігання.', en: 'Modern stand with extra storage space.', es: 'Mueble de TV moderno con espacio de almacenaje.' },
-                        price: 40,
-                        priceOld: 89,
-                        count: 1,
-                        photos: ['tvtable1.JPG', 'tvtable2.JPG', 'tvtable3.JPG']
-                    },
-                    {
-                        id: 13,
-                        status: 'active',
-                        name: { ua: 'Телевізор LG 55 QNED', en: 'LG 55 QNED TV', es: 'Televisor LG 55 QNED' },
-                        desc: { ua: 'Приголомшлива якість зображення, великий екран.', en: 'Stunning picture quality, large screen.', es: 'Calidad de imagen increíble, pantalla grande.' },
-                        price: 619,
-                        priceOld: 749,
-                        count: 1,
-                        photos: ['TV1.JPG', 'TV2.JPG']
-                    }
+                    { id: 1, status: 'active', name: { ua: 'Розумний вентилятор', en: 'Smart fan', es: 'Ventilador inteligente' }, desc: { ua: 'Працює ідеально, має 3 ступені обдуву та пульт. Майже безшумний.', en: 'Works perfectly, 3 airflow levels, remote control. Almost silent.', es: 'Funciona perfectamente, 3 niveles de aire y control remoto.' }, price: 89, priceOld: 106, count: 2, photos: ['aircon1.JPG', 'aircon2.JPG', 'aircon3.JPG', 'aircon4.JPG', 'aircon5.JPG'] },
+                    { id: 2, status: 'active', name: { ua: 'Барний стіл та стільці', en: 'Bar table and chairs', es: 'Mesa de bar y sillas' }, desc: { ua: 'Зручний високий стіл та два стільці. Стан 8/10.', en: 'Comfortable high table and two chairs. Condition 8/10.', es: 'Mesa alta cómoda y dos sillas. Estado 8/10.' }, price: 49, priceOld: 99, count: 1, photos: ['bartab1.JPG', 'bartab2.JPG', 'bartab3.JPG', 'bartab4.JPG', 'bartab5.JPG'] },
+                    { id: 3, status: 'active', name: { ua: 'Стілець складний', en: 'Folding chair', es: 'Silla plegable' }, desc: { ua: 'Зручні складні стільці. Ціна за 1 шт.', en: 'Comfortable folding chairs. Price per unit.', es: 'Sillas plegables cómodas. Precio por unidad.' }, price: 10, priceOld: 17, count: 4, photos: ['chair1.JPG', 'chair2.JPG'] },
+                    { id: 4, status: 'active', name: { ua: 'Кавовий столик', en: 'Coffee table', es: 'Mesa de centro' }, desc: { ua: 'Компактний столик для вітальні.', en: 'Compact table for the living room.', es: 'Mesa compacta para el salón.' }, price: 10, priceOld: 24.99, count: 1, photos: ['cooffeet1.JPG', 'cooffeet2.JPG'] },
+                    { id: 5, status: 'active', name: { ua: 'Туалетний столик', en: 'Dressing table', es: 'Tocador' }, desc: { ua: 'Елегантний столик з дзеркалом.', en: 'Elegant table with a mirror.', es: 'Mesa elegante con espejo.' }, price: 110, priceOld: 169, count: 1, photos: ['cosmotab1.JPG', 'cosmotab2.JPG', 'cosmotab3.JPG', 'cosmotab4.JPG'] },
+                    { id: 6, status: 'active', name: { ua: 'Обідній стіл (розкладний)', en: 'Dining table (foldable)', es: 'Mesa de comedor (plegable)' }, desc: { ua: 'Великий розкладний стіл для всієї родини.', en: 'Large foldable table for the whole family.', es: 'Mesa de comedor grande y plegable.' }, price: 49, priceOld: 89, count: 1, photos: ['dinningt1.JPG', 'dinningt2.JPG', 'dinningt3.JPG', 'dinningt4.JPG', 'dinningt5.JPG', 'dinningt6.JPG'] },
+                    { id: 7, status: 'active', name: { ua: 'Мікрохвильова піч', en: 'Microwave oven', es: 'Microondas' }, desc: { ua: 'Надійна та потужна піч у гарному стані.', en: 'Reliable and powerful oven in good condition.', es: 'Microondas fiable y potente en buen estado.' }, price: 29, priceOld: 69, count: 1, photos: ['mw1.JPG', 'mw2.JPG', 'mw3.JPG', 'mw4.JPG', 'mw5.JPG'] },
+                    { id: 8, status: 'active', name: { ua: 'Косметична шафка', en: 'Cosmetic cabinet', es: 'Armario de cosméticos' }, desc: { ua: 'Зручна шафка для дрібниць у ванну або спальню.', en: 'Convenient cabinet for small items.', es: 'Armario práctico para objetos pequeños.' }, price: 15, priceOld: 29, count: 1, photos: ['sha1.JPG', 'sha2.JPG'] },
+                    { id: 9, status: 'active', name: { ua: 'Офісне крісло', en: 'Office chair', es: 'Silla ofi' }, desc: { ua: 'Ергономічне крісло для роботи.', en: 'Ergonomic chair for work.', es: 'Silla ergonómica para trabajar.' }, price: 39, priceOld: 99, count: 1, photos: ['officech1.JPG', 'officech2.JPG', 'officech3.JPG'] },
+                    { id: 10, status: 'active', name: { ua: 'Полиця для взуття', en: 'Shoe rack', es: 'Zapatero' }, desc: { ua: 'Компактна полиця, що економить простір.', en: 'Compact rack that saves space.', es: 'Estante compacto que ahorra espacio.' }, price: 5, priceOld: 20, count: 1, photos: ['shoes1.JPG', 'shoes2.JPG'] },
+                    { id: 11, status: 'active', name: { ua: 'Диван', en: 'Sofa', es: 'Sofá' }, desc: { ua: 'Великий комфортний диван, стан відмінний.', en: 'Large comfortable sofa, excellent condition.', es: 'Sofá grande y cómodo, excelente estado.' }, price: 150, priceOld: 499, count: 1, photos: ['sofa1.JPG', 'sofa2.JPG', 'sofa3.JPG', 'sofa4.JPG', 'sofa5.JPG'] },
+                    { id: 12, status: 'active', name: { ua: 'Тумба під телевізор', en: 'TV Stand', es: 'Mueble de TV' }, desc: { ua: 'Сучасна тумба з місцем для зберігання.', en: 'Modern stand with storage space.', es: 'Mueble de TV moderno con almacenaje.' }, price: 40, priceOld: 89, count: 1, photos: ['tvtable1.JPG', 'tvtable2.JPG', 'tvtable3.JPG'] },
+                    { id: 13, status: 'active', name: { ua: 'Телевізор LG 55 QNED', en: 'LG 55 QNED TV', es: 'Televisor LG 55 QNED' }, desc: { ua: 'Приголомшлива якість зображення, великий екран.', en: 'Stunning picture quality, large screen.', es: 'Calidad de imagen increíble, pantalla grande.' }, price: 619, priceOld: 749, count: 1, photos: ['TV1.JPG', 'TV2.JPG'] }
                 ]
             }
         }
