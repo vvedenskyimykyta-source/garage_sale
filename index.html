@@ -60,18 +60,23 @@
             <template x-for="item in products" :key="item.id">
                 <div class="bg-white rounded-[2.5rem] shadow-sm border border-gray-100 overflow-hidden flex flex-col transition-all hover:shadow-xl group" :class="item.status === 'sold' ? 'opacity-50 grayscale' : ''">
                     
-                    <div class="relative overflow-hidden">
+                    <div class="relative overflow-hidden bg-gray-100">
                         <div class="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar">
                             <template x-for="img in item.photos">
-                                <div class="min-w-full snap-center aspect-[4/5] bg-gray-50">
-                                    <img :src="img" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt="">
+                                <div class="min-w-full snap-center aspect-[4/5] flex items-center justify-center">
+                                    <img :src="img" 
+                                        loading="lazy"
+                                        class="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105" 
+                                        alt="product image">
                                 </div>
                             </template>
                         </div>
-                        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold text-white uppercase tracking-widest" x-text="t[lang].swipe"></div>
+                        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/30 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold text-white uppercase tracking-widest pointer-events-none" 
+                            x-show="item.photos.length > 1"
+                            x-text="t[lang].swipe"></div>
                         
                         <template x-if="item.status === 'sold'">
-                            <div class="absolute inset-0 bg-black/60 flex items-center justify-center">
+                            <div class="absolute inset-0 bg-black/60 flex items-center justify-center z-10">
                                 <span class="bg-white px-6 py-3 rounded-2xl font-black uppercase tracking-widest text-lg rotate-[-5deg]" x-text="t[lang].sold"></span>
                             </div>
                         </template>
