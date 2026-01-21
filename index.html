@@ -42,8 +42,8 @@
             </div>
             
             <div class="flex gap-4 mt-6">
-                <a :href="'https://t.me/' + contacts.tg" class="flex-1 bg-[#229ED9] text-white py-3 rounded-xl font-bold text-center transition hover:opacity-90">Telegram</a>
-                <a :href="'https://wa.me/' + contacts.wa" class="flex-1 bg-[#25D366] text-white py-3 rounded-xl font-bold text-center transition hover:opacity-90">WhatsApp</a>
+                <a :href="'https://t.me/' @lagerfeeld" class="flex-1 bg-[#229ED9] text-white py-3 rounded-xl font-bold text-center transition hover:opacity-90">Telegram</a>
+                <a :href="'https://wa.me/' 380984002947" class="flex-1 bg-[#25D366] text-white py-3 rounded-xl font-bold text-center transition hover:opacity-90">WhatsApp</a>
             </div>
         </section>
 
@@ -100,13 +100,13 @@
             return {
                 lang: 'ua',
                 contacts: {
-                    tg: 'lagerfeeld', 
+                    tg: '@lagerfeeld', 
                     wa: '380984002947'   
                 },
                 t: {
-                    ua: { title: 'Розпродаж', aboutTitle: 'Ми переїжджаємо!', aboutText: 'Продаємо речі у зв’язку з переїздом. Все в гарному стані.', location: 'Самовивіз: Валенсія, центр', payment: 'Оплата: Готівка або Revolut', sold: 'Продано', msg: 'Привіт! Хочу купити:', swipe: 'свайп', buyBtn: 'Купити', countLabel: 'В наявності' },
-                    en: { title: 'Moving Sale', aboutTitle: 'We are moving!', aboutText: 'Selling our stuff because we are relocating. Great condition.', location: 'Pickup: Valencia, City Center', payment: 'Payment: Cash or Revolut', sold: 'Sold Out', msg: 'Hi! I want to buy:', swipe: 'swipe', buyBtn: 'Buy', countLabel: 'Available' },
-                    es: { title: 'Venta de mudanza', aboutTitle: '¡Nos mudamos!', aboutText: 'Vendemos nuestras cosas por mudanza. Todo en excelente estado.', location: 'Recogida: Valencia, centro', payment: 'Pago: Efectivo o Revolut', sold: 'Vendido', msg: '¡Hola! Quiero comprar:', swipe: 'deslizar', buyBtn: 'Comprar', countLabel: 'Disponible' }
+                    ua: { title: 'Розпродаж', aboutTitle: 'Ми переїжджаємо!', aboutText: 'Продаємо речі у зв’язку з переїздом. Все в гарному стані.', location: 'Самовивіз: Кашкайш', payment: 'Оплата: Готівка, крипта, Wise, Papypal, IBAN', sold: 'Продано', msg: 'Привіт! Хочу купити:', swipe: 'свайп', buyBtn: 'Купити', countLabel: 'В наявності' },
+                    en: { title: 'Moving Sale', aboutTitle: 'We are moving!', aboutText: 'Selling our stuff because we are relocating. Great condition.', location: 'Pickup: Cascais', payment: 'Payment: Cash, crypto, Wise, Paypal, IBAN', sold: 'Sold Out', msg: 'Hi! I want to buy:', swipe: 'swipe', buyBtn: 'Buy', countLabel: 'Available' },
+                    es: { title: 'Venta de mudanza', aboutTitle: '¡Nos mudamos!', aboutText: 'Vendemos nuestras cosas por mudanza. Todo en excelente estado.', location: 'Recogida: Cascais', payment: 'Pago: Efectivo, criptomonedas, Wise, Paypal, IBAN', sold: 'Vendido', msg: '¡Hola! Quiero comprar:', swipe: 'deslizar', buyBtn: 'Comprar', countLabel: 'Disponible' }
                 },
                 products: [
                     { id: 1, status: 'active', name: { ua: 'Розумний вентилятор', en: 'Smart fan', es: 'Ventilador inteligente' }, desc: { ua: 'Працює ідеально, має 3 ступені обдуву та пульт. Майже безшумний.', en: 'Works perfectly, 3 airflow levels, remote control. Almost silent.', es: 'Funciona perfectamente, 3 niveles de aire y control remoto.' }, price: 89, priceOld: 106, count: 2, photos: ['aircon1.JPG', 'aircon2.JPG', 'aircon3.JPG', 'aircon4.JPG', 'aircon5.JPG'] },
